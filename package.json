@@ -1,7 +1,12 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "build":"lerna run build",
+    "start": "lerna run start --scope=multi-repo1",
+    "test": "lerna run test"
+  },
   "devDependencies": {
     "lerna": "^3.18.3"
-  }
+  } 
 }
