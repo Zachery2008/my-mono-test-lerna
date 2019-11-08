@@ -7,7 +7,7 @@ var server = http.createServer(function(request, response) {
 
 });
 
-var port = 3006;
+var port = 3030;
 server.listen(port);
 
 console.log("Server running at http://localhost:%d", port);
