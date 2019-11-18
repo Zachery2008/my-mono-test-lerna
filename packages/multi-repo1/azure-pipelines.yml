@@ -25,5 +25,5 @@ steps:
 - script: |
     npm install
     npm run test
-  workingDirectory: /packages/multi-repo1/
+  workingDirectory: packages/multi-repo1
   displayName: 'npm install and test'
