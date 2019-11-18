@@ -2,6 +2,7 @@
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
 trigger:
   branches:
     include:
@@ -12,19 +13,17 @@ trigger:
     #Hardcoding for now
     - '/packages/multi-repo1/*'
 
-  pool:
+pool:
   vmImage: 'ubuntu-latest'
 
-stages:
-  - stage: Build
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
-    - script: |
-        npm install
-        npm run test
-      workingDirectory: packages/multi-repo1
-      displayName: 'npm install and test'
+- script: |
+    npm install
+    npm run test
+  workingDirectory: packages/multi-repo1
+  displayName: 'npm install and test'
