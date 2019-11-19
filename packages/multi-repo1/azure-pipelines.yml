@@ -6,7 +6,7 @@
 pr:
   branches:
     include:
-      - '*'
+      - 'master'
   paths:
     include:
     #Can't use a variable since they are evaluated at runtime, not at trigger time.
