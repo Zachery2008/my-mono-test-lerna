@@ -15,15 +15,25 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '10.x'
+          displayName: 'Install Node.js'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+        - script: |
+            npm install
+          workingDirectory: packages/multi-repo1
+          displayName: 'npm install'
+      
+      - job: Test
+        steps:
 
-- script: |
-    npm install
-    npm run test
-  workingDirectory: packages/multi-repo1
-  displayName: 'npm install and test'
+        - script: |
+            npm run test
+          workingDirectory: packages/multi-repo1
+          displayName: 'npm run test'
