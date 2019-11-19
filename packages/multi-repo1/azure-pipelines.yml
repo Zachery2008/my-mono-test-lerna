@@ -3,24 +3,22 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-pr:
+trigger:
   branches:
     include:
-      - 'master'
+      - master
   paths:
     include:
     #Can't use a variable since they are evaluated at runtime, not at trigger time.
     #Hardcoding for now
     - '/packages/multi-repo1/*'
 
-
+pool:
+  vmImage: 'ubuntu-latest'
 stages:
   - stage: Build
-    jobs: 
+    jobs:
       - job: Build
-        pool:
-          vmImage: 'ubuntu-latest'
-          
         steps:
         - task: NodeTool@0
           inputs:
