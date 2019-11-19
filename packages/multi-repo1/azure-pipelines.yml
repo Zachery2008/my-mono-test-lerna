@@ -27,6 +27,13 @@ stages:
 
         - script: |
             npm install
+          workingDirectory: packages/multi-repo1
+          displayName: 'npm install'
+      
+      - job: Test
+        steps:
+
+        - script: |
             npm run test
           workingDirectory: packages/multi-repo1
-          displayName: 'npm install and test'
+          displayName: 'npm run test'
