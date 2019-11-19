@@ -13,17 +13,22 @@ pr:
     #Hardcoding for now
     - '/packages/multi-repo1/*'
 
-pool:
-  vmImage: 'ubuntu-latest'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+stages:
+  - stage: Build
+    jobs: 
+      - job: Build
+        pool:
+          vmImage: 'ubuntu-latest'
+          
+        steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '10.x'
+          displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run test
-  workingDirectory: packages/multi-repo1
-  displayName: 'npm install and test'
+        - script: |
+            npm install
+            npm run test
+          workingDirectory: packages/multi-repo1
+          displayName: 'npm install and test'
